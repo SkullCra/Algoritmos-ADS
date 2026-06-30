@@ -16,7 +16,7 @@ int main()
     int dados[4][6];
     int escolha_parto, condicao, opcao;
 
-    printf("\n#### MATERNIDADE MUNICIPAL SANTA LUZIA ####\n");
+    printf("\n#### MATERNIDADE MUNICIPAL ####\n");
     do
     {
         printf("Informe o nome do setor da maternidade: ");
@@ -309,6 +309,7 @@ int main()
         {
         case 0:
             printf ("Saindo...\n");
+            break;
         case 1:
             printf("\n====== TABELA GERAL - MATERNIDADE SETOR %s ======\n", setor);
             printf("---------------------------------------------------\n");
