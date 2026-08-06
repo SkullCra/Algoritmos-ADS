@@ -16,6 +16,7 @@ int main()
     float preco_venda[4];
     float dados[4][4];
     int opcao, escolha, opcao_menu;
+    int indice_opcao = 0;
 
     printf("\n==== SISTEMAS LOJAS BENOIT ====\n");
     printf("Cadastramento de produtos:\n");
@@ -63,6 +64,80 @@ int main()
         }
     }
 
+    // for (int v = 0; v < 10; v++)
+    // {
+    //     do
+    //     {
+    //         printf("=== Venda %d de 10 ===\n", v + 1);
+    //         for (int p = 0; p < 4; p++)
+    //         {
+    //             printf("%d - %s\n", p + 1, produtos[p]);
+    //         }
+    //         printf("Sua venda: ");
+    //         scanf("%d", &opcao);
+    //         limparBuffer();
+    //         int indice_opcao = (opcao - 1);
+
+    //         if (opcao < 1 || opcao > 4)
+    //         {
+    //             printf("ERRO: Opção inválida!\n");
+    //         }
+    //     } while (opcao < 1 || opcao > 4);
+
+    //     if (opcao == 1)
+    //     {
+    //         printf("\n");
+    //         printf("Quantidade vendida: ");
+    //         int quantidade;
+    //         scanf("%d", &quantidade);
+
+    //         dados[0][0] = dados[0][0] + 1;
+    //         dados[0][1] = dados[0][1] + ((quantidade)*preco_venda[0]);
+    //         dados[0][2] = dados[0][2] + ((quantidade)*preco_custo[0]);
+    //         dados[0][3] = dados[0][3] + ((dados[0][1]) - (dados[0][2]));
+    //     }
+
+    //     if (opcao == 2)
+    //     {
+    //         printf("\n");
+    //         printf("Quantidade vendida: ");
+    //         int quantidade;
+    //         scanf("%d", &quantidade);
+
+    //         dados[1][0] = dados[1][0] + 1;
+    //         dados[1][1] = dados[1][1] + ((quantidade)*preco_venda[1]);
+    //         dados[1][2] = dados[1][2] + ((quantidade)*preco_custo[1]);
+    //         dados[1][3] = dados[1][3] + ((dados[1][1]) - (dados[1][2]));
+    //     }
+
+    //     if (opcao == 3)
+    //     {
+    //         printf("\n");
+    //         printf("Quantidade vendida: ");
+    //         int quantidade;
+    //         scanf("%d", &quantidade);
+
+    //         dados[2][0] = dados[2][0] + 1;
+    //         dados[2][1] = dados[2][1] + ((quantidade)*preco_venda[2]);
+    //         dados[2][2] = dados[2][2] + ((quantidade)*preco_custo[2]);
+    //         dados[2][3] = dados[2][3] + ((dados[2][1]) - (dados[2][2]));
+    //     }
+
+    //     if (opcao == 4)
+    //     {
+    //         printf("\n");
+    //         printf("Quantidade vendida: ");
+    //         int quantidade;
+    //         scanf("%d", &quantidade);
+
+    //         dados[3][0] = dados[3][0] + 1;
+    //         dados[3][1] = dados[3][1] + ((quantidade)*preco_venda[3]);
+    //         dados[3][2] = dados[3][2] + ((quantidade)*preco_custo[3]);
+    //         dados[3][3] = dados[3][3] + ((dados[3][1]) - (dados[3][2]));
+    //     }
+    // }
+
+    indice_opcao = 0;
     for (int v = 0; v < 10; v++)
     {
         do
@@ -75,6 +150,7 @@ int main()
             printf("Sua venda: ");
             scanf("%d", &opcao);
             limparBuffer();
+            indice_opcao = (opcao - 1);
 
             if (opcao < 1 || opcao > 4)
             {
@@ -82,57 +158,16 @@ int main()
             }
         } while (opcao < 1 || opcao > 4);
 
-        if (opcao == 1)
-        {
-            printf("\n");
-            printf("Quantidade vendida: ");
-            int quantidade;
-            scanf("%d", &quantidade);
+        printf("\n");
+        printf("Quantidade vendida: ");
+        int quantidade;
+        scanf("%d", &quantidade);
+        limparBuffer();
 
-            dados[0][0] = dados[0][0] + 1;
-            dados[0][1] = dados[0][1] + ((quantidade)*preco_venda[0]);
-            dados[0][2] = dados[0][2] + ((quantidade)*preco_custo[0]);
-            dados[0][3] = dados[0][3] + ((dados[0][1]) - (dados[0][2]));
-        }
-
-        if (opcao == 2)
-        {
-            printf("\n");
-            printf("Quantidade vendida: ");
-            int quantidade;
-            scanf("%d", &quantidade);
-
-            dados[1][0] = dados[1][0] + 1;
-            dados[1][1] = dados[1][1] + ((quantidade)*preco_venda[1]);
-            dados[1][2] = dados[1][2] + ((quantidade)*preco_custo[1]);
-            dados[1][3] = dados[1][3] + ((dados[1][1]) - (dados[1][2]));
-        }
-
-        if (opcao == 3)
-        {
-            printf("\n");
-            printf("Quantidade vendida: ");
-            int quantidade;
-            scanf("%d", &quantidade);
-
-            dados[2][0] = dados[2][0] + 1;
-            dados[2][1] = dados[2][1] + ((quantidade)*preco_venda[2]);
-            dados[2][2] = dados[2][2] + ((quantidade)*preco_custo[2]);
-            dados[2][3] = dados[2][3] + ((dados[2][1]) - (dados[2][2]));
-        }
-
-        if (opcao == 4)
-        {
-            printf("\n");
-            printf("Quantidade vendida: ");
-            int quantidade;
-            scanf("%d", &quantidade);
-
-            dados[3][0] = dados[3][0] + 1;
-            dados[3][1] = dados[3][1] + ((quantidade)*preco_venda[3]);
-            dados[3][2] = dados[3][2] + ((quantidade)*preco_custo[3]);
-            dados[3][3] = dados[3][3] + ((dados[3][1]) - (dados[3][2]));
-        }
+        dados[indice_opcao][0] = dados[indice_opcao][0] + quantidade;
+        dados[indice_opcao][1] = dados[indice_opcao][1] + ((quantidade)*preco_venda[0]);
+        dados[indice_opcao][2] = dados[indice_opcao][2] + ((quantidade)*preco_custo[0]);
+        dados[indice_opcao][3] = dados[indice_opcao][3] + ((dados[0][1]) - (dados[0][2]));
     }
 
     do

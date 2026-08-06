@@ -32,15 +32,15 @@ int main()
             fgets(ingressos[i], sizeof(ingressos[i]), stdin);
             ingressos[i][strcspn(ingressos[i], "\n")] = '\0';
 
-            if (ingressos[i] == 0)
+            if (strlen (ingressos[i]) == 0)
             {
                 printf("ERRO: Nome do ingresso não pode estar em branco!\n");
             }
-        } while (ingressos[i] == 0);
+        } while (strlen (ingressos[i]) == 0);
 
         do
         {
-            printf("Preço do %dº ingresso: ", i + 1);
+            printf("Preço do %dº ingresso: R$ ", i + 1);
             scanf("%f", &preco_ingresso[i]);
             limparBuffer();
             if (preco_ingresso[i] <= 0)
@@ -133,7 +133,7 @@ int main()
             printf("[TIPO DE INGRESSO] | [QTD VENDIDA] | [FATURAMENTO TOTAL]\n");
             for (int i = 0; i < 4; i++)
             {
-                printf("[%d - %s] | [%.2f] | [%.2f]\n", i + 1, ingressos[i], dados[i][0], dados[i][1]);
+                printf("[%d - %s] | [%.2f] | [R$ %.2f]\n", i + 1, ingressos[i], dados[i][0], dados[i][1]);
             }
             break;
 
@@ -192,9 +192,9 @@ int main()
             } while (opcao_resumo < 1 || opcao_resumo > 4);
 
             printf("Nome do ingresso: %s.\n", ingressos[indice_ingresso]);
-            printf("Preço do ingresso: %.2f.\n", preco_ingresso[indice_ingresso]);
+            printf("Preço do ingresso: R$ %.2f.\n", preco_ingresso[indice_ingresso]);
             printf("Quantidade vendida: %.2f.\n", dados[indice_ingresso][0]);
-            printf("Faturamento total: %.2f.\n", dados[indice_ingresso][1]);
+            printf("Faturamento total: R$ %.2f.\n", dados[indice_ingresso][1]);
             break;
 
         default:
