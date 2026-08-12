@@ -19,7 +19,7 @@ int main()
 {
     int valor;
 
-    printf("Digite um número de 1 a 9 para ver sua tabuada:\n");
+    printf("Digite um número de 1 a 10 para ver sua tabuada:\n");
     printf("Sua escolha: ");
     scanf("%d", &valor);
 
@@ -36,7 +36,7 @@ void imprimeTabuada()
     printf("Digite um número de 1 a 9: ");
     scanf("%d", &numero);
 
-    for (int i = 1; i < 10; i++)
+    for (int i = 1; i < 11; i++)
     {
         printf("%d * %d = %d\n", numero, i, numero * i);
     }
