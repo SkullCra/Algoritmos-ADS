@@ -24,4 +24,6 @@ int main()
 
     tamanho = calculadora_strings(nome);
     printf("A quantidade de caracteres é de %d.\n", tamanho);
+
+    return 0;
 }
