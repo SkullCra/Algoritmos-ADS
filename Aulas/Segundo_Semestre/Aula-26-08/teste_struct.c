@@ -27,7 +27,6 @@ int main()
 {
     struct Aluno alunos[30];
     int qtd_desejada = 0;
-    enum SituacaoAluno situacao[30];
     int opcao_situacao = 0;
 
     printf("Quantos alunos deseja cadastrar?\n");
@@ -36,17 +35,16 @@ int main()
 
     for (int i = 0; i < qtd_desejada; i++)
     {
-        struct Aluno aluno[i];
         printf("Aluno %d\n", i + 1);
 
-        int matriculaRepetida = 0;
+        int matriculaRepetida;
         do
         {
             matriculaRepetida = 0;
             printf("Insira a matricula do aluno: ");
             scanf("%d", &alunos[i].matricula);
 
-            for (int j = 0; j < 1; j++)
+            for (int j = 0; j < i; j++)
             {
                 if (alunos[i].matricula == alunos[j].matricula)
                 {
@@ -58,16 +56,24 @@ int main()
         } while (matriculaRepetida);
         limparBuffer();
 
+        int nomeRepetido;
         do
         {
+            nomeRepetido = 0;
             printf("Insira o nome do aluno: ");
             fgets(alunos[i].nome, sizeof(alunos[i].nome), stdin);
             alunos[i].nome[strcspn(alunos[i].nome, "\n")] = '\0';
-            if (strcmp(alunos[i].nome, alunos[i + 1].nome) == 0)
-            {
-                printf("ERRO: Nome do aluno já cadastrado!\n");
+
+            for (int j = 0; j < i; j ++) {
+                if (strcmp(alunos[i].nome, alunos[j].nome) == 0)
+                {
+                    nomeRepetido = 1;
+                    printf("ERRO: Nome do aluno já cadastrado!\n");
+                    break;
+                }
             }
-        } while (strcmp(alunos[i].nome, alunos[i + 1].nome) == 0);
+            
+        } while (nomeRepetido);
 
         printf("Insira a média do aluno: ");
         scanf("%f", &alunos[i].media);
@@ -86,7 +92,7 @@ int main()
                 printf("ERRO: Opção inválida!\n");
             }
         } while (opcao_situacao < MATRICULADO || opcao_situacao > FORMADO);
-        situacao[i] = (enum SituacaoAluno)opcao_situacao;
+        alunos[i].situacao = (enum SituacaoAluno)opcao_situacao;
         limparBuffer();
         printf("\n");
     }
@@ -96,7 +102,7 @@ int main()
         printf("Matrícula: %d\n", alunos[i].matricula);
         printf("Nome do aluno: %s\n", alunos[i].nome);
         printf("Média: %.2f\n", alunos[i].media);
-        switch (situacao[i])
+        switch (alunos[i].situacao)
         {
         case MATRICULADO:
             printf("O aluno está matriculado.\n");
